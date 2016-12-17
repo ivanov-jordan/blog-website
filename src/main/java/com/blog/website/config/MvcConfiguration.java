@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.blog.website.controller")
-public class WebConfiguration extends WebMvcConfigurerAdapter {
+public class MvcConfiguration extends WebMvcConfigurerAdapter {
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
