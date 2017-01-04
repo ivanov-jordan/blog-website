@@ -10,6 +10,9 @@
   <logger name="com.blog">
     <level value="TRACE" />
   </logger>
+  <logger name="org.springframework">
+    <level value="INFO" />
+  </logger>
   <logger name="org.hibernate">
     <level value="INFO" />
   </logger>

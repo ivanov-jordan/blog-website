@@ -9,6 +9,8 @@ response.setHeader("Expires", "0");
 <%@ taglib prefix="c"	uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt"	uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn"	uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <c:set var="timeZone" value="GMT" />
 <c:set var="dateFormat" value="dd/MM/yyyy HH:mm:ss:SSS Z" />

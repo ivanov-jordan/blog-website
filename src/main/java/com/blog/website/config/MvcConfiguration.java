@@ -1,5 +1,6 @@
 package com.blog.website.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -7,22 +8,25 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import lombok.extern.slf4j.Slf4j;
+import com.blog.website.interceptor.SessionInterceptor;
 
 /**
  * Configures Spring Web MVC.
  * 
  * @author Jordan
  */
-@Slf4j
 @Configuration
 @EnableWebMvc
-@ComponentScan("com.blog.website.controller")
+@ComponentScan({"com.blog.website.interceptor", "com.blog.website.controller", "com.blog.website.validator"})
 public class MvcConfiguration extends WebMvcConfigurerAdapter {
+
+    @Autowired
+    private SessionInterceptor sessionInterceptor;
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
@@ -47,6 +51,11 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
         CommonsMultipartResolver resolver = new CommonsMultipartResolver();
         resolver.setMaxUploadSize(50 * 1024 * 1024);
         return resolver;
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(sessionInterceptor);
     }
 
 }

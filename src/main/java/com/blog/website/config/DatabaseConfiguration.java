@@ -56,8 +56,7 @@ public class DatabaseConfiguration {
         entityManagerFactoryBean.setPersistenceUnitName("MapperEntityManagerFactory");
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         entityManagerFactoryBean.setPackagesToScan(
-                "com.offside.feed.model",
-                "com.offside.core.model.externalevents");
+                "com.blog.website.model");
         entityManagerFactoryBean.setJpaProperties(hibernateProperties());
         return entityManagerFactoryBean;
     }
