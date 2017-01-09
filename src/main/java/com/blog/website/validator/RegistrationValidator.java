@@ -18,20 +18,20 @@ public class RegistrationValidator {
         // validate username
         User user = userManager.getUser(registerForm.getUsername());
         if (user != null) {
-            errors.rejectValue("username", "register.username.taken", "Username is taken");
+            errors.rejectValue("username", "register.username.taken");
         }
 
         // validate first and last name
         if (registerForm.getFirstname().trim().isEmpty()) {
-            errors.rejectValue("firstname", "register.firstname.empty", "First name could not be empty");
+            errors.rejectValue("firstname", "register.firstname.empty");
         }
         if (registerForm.getLastname().trim().isEmpty()) {
-            errors.rejectValue("lastname", "register.lastname.empty", "Last name could not be empty");
+            errors.rejectValue("lastname", "register.lastname.empty");
         }
 
         // validate password
         if (!registerForm.getPassword().equals(registerForm.getConfirmPassword())) {
-            errors.rejectValue("confirmPassword", "register.password.mismatch", "Passwords does not match");
+            errors.rejectValue("confirmPassword", "register.password.mismatch");
         }
     }
 

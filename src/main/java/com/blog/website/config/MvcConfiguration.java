@@ -13,6 +13,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import com.blog.website.interceptor.CommonModelInterceptor;
 import com.blog.website.interceptor.SessionInterceptor;
 
 /**
@@ -28,6 +29,9 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
     @Autowired
     private SessionInterceptor sessionInterceptor;
 
+    @Autowired
+    private CommonModelInterceptor commonModelInterceptor;
+
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         PropertySourcesPlaceholderConfigurer configurer = new PropertySourcesPlaceholderConfigurer();
@@ -38,7 +42,8 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/css/**").addResourceLocations("/css/");
+        registry.addResourceHandler("/layout/**").addResourceLocations("/layout/");
+        registry.addResourceHandler("/images/**").addResourceLocations("/images/");
     }
 
     @Override
@@ -56,6 +61,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(sessionInterceptor);
+        registry.addInterceptor(commonModelInterceptor);
     }
 
 }

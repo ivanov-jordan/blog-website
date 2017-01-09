@@ -54,11 +54,11 @@ public class ProfileController {
         if (loginForm != null) {
             User user = userManager.getUser(loginForm.getUsername());
             if (user == null) {
-                result.reject("invalid.user", "invalid user");
+                result.reject("login.invalid.user");
                 return mav;
             } else {
                 if (!PasswordUtils.checkPassword(loginForm.getPassword(), user.getPassword())) {
-                    result.reject("invalid.user.pass", "wrong user / pass");
+                    result.reject("login.invalid.pass");
                     return mav;
                 }
             }
