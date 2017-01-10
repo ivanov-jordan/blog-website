@@ -60,7 +60,7 @@
 </div>
 <!-- JAVASCRIPTS -->
 <div id="commonDialog"></div>
-<script src="layout/scripts/jquery.min.js"></script> 
-<script src="layout/scripts/jquery.mobilemenu.js"></script>
+<script src="/website/layout/scripts/jquery.min.js"></script> 
+<script src="/website/layout/scripts/jquery.mobilemenu.js"></script>
 </body>
 </html>

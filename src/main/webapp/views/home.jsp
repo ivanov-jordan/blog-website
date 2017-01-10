@@ -14,7 +14,7 @@
           <div class="one_half first"><img src="${article.image}" alt="" style="width: 320px; height: 150px;"></div>
           <div class="one_half">
             <h6 class="heading"><c:out value="${article.title}" /></h6>
-            <p class="link"><a class="btn" href="#">Read More &raquo;</a></p>
+            <p class="link"><a class="btn" href="/website/article/${article.id}">Read More &raquo;</a></p>
           </div>
           <!-- ################################################################################################ -->
         </article>
@@ -45,7 +45,7 @@
                 <time datetime="${article.published}"><c:out value="${article.published}" /></time>
               </div>
               <p class="shortintro"><c:out value="${article.description}" /></p>
-              <p class="link"><a class="btn" href="#">Read More &raquo;</a></p>
+              <p class="link"><a class="btn" href="/website/article/${article.id}">Read More &raquo;</a></p>
             </article>
           </li>
           </c:forEach>
@@ -58,8 +58,4 @@
   </main>
 </div>
 
-
-<c:forEach items="${articles}" var="article" begin="2">
-  <c:out value="${article.title}"/><br/><br/>
-</c:forEach>
 <%@ include file="includes/footer.jsp" %>

@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -37,7 +38,7 @@ public class Article {
     @JoinTable(name = "categories_articles",
             joinColumns = {@JoinColumn(name = "articleid", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "categoryid", referencedColumnName = "id")})
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Category> categories;
 
 }

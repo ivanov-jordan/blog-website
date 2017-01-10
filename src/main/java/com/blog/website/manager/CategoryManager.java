@@ -23,4 +23,8 @@ public class CategoryManager {
         return categories;
     }
 
+    public Category getCategory(long categoryId) {
+        return categoryRepository.findOne(categoryId);
+    }
+
 }
