@@ -24,6 +24,10 @@ public class ArticleManager {
         return articleRepository.findAllByOrderByPublishedDesc();
     }
 
+    public List<Article> getArticlesByCategory(long categoryId) {
+        return articleRepository.findAllByCategories_IdOrderByPublishedDesc(categoryId);
+    }
+
     public void submitArticle(Article article, User author) {
         article.setAuthor(author);
         article.setPublished(new Date());

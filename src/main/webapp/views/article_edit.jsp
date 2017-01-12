@@ -23,7 +23,7 @@
           </div>
           <div class="block clear">
             <label for="content">Content</label>
-            <form:textarea path="content" id="content" cols="25" rows="10"></form:textarea>
+            <form:textarea path="content" id="content" cssClass="tinymce" cols="25" rows="10"></form:textarea>
           </div>
           <div class="block clear">
             <label for="content">Categories</label>

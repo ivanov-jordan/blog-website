@@ -19,8 +19,20 @@ response.setHeader("Expires", "0");
   <div id="topbar" class="clear"> 
     <!-- ################################################################################################ -->
     <div class="fl_left">
-
+    <c:if test="${user != null && user.editor == true}">
+      <ul class="nospace linklist">
+        <li><a href="/website/article/0/edit">New article</a></li>
+        <c:if test="${article != null}">
+        <li><a href="/website/article/${article.id}/edit">Edit article</a></li>
+        </c:if>
+        <li><a href="/website/category/0/edit">New category</a></li>
+        <c:if test="${selectedCategory != null}">
+        <li><a href="/website/category/${selectedCategory}/edit">Edit category</a></li>
+        </c:if>
+      </ul>
+    </c:if>
     </div>
+
     <div class="fl_right">
       <ul class="nospace linklist">
       <c:choose>
@@ -51,7 +63,7 @@ response.setHeader("Expires", "0");
     <nav id="mainav" class="fl_right">
       <ul class="clear">
       <c:forEach items="${categoriesList}" var="category">
-        <li><a href="/website/category/{$category.id}"><c:out value="${category.name}" /></a></li>
+        <li<c:if test="${selectedCategory != null && category.id == selectedCategory}"><c:out value=" class=\"active\"" escapeXml="false" /></c:if>><a href="/website/category/<c:out value="${category.id}" />"><c:out value="${category.name}" /></a></li>
       </c:forEach>
       </ul>
     </nav>

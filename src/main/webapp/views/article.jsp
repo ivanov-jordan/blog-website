@@ -7,9 +7,6 @@
     <div class="content"> 
       <!-- ################################################################################################ -->
       <h1><c:out value="${article.title}" /></h1>
-      <c:if test="${user != null && user.editor}">
-      <div class="fl_right"><a href="/website/article/${article.id}/edit">Edit</a></div>
-      </c:if>
       <div class="meta btmspace-50">
                 <address>
                 By <a href="#"><c:out value="${article.author.firstname}" /> <c:out value="${article.author.lastname}" /></a>
@@ -18,7 +15,7 @@
       </div>
       <img class="imgr borderedbox inspace-5" src="${article.image}" alt="" style="width: 460px; height: 300px;">
       
-      <c:out value="${article.content}" />
+      <c:out value="${article.content}" escapeXml="false" />
       
       <div id="comments">
       <c:choose>

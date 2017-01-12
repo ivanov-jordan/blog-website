@@ -10,6 +10,6 @@ public interface ArticleRepository extends CrudRepository<Article, Long> {
 
     List<Article> findAllByOrderByPublishedDesc();
 
-    List<Article> findByCategories_Id(Long categoryId);
+    List<Article> findAllByCategories_IdOrderByPublishedDesc(Long categoryId);
 
 }

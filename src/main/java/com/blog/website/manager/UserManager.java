@@ -16,6 +16,10 @@ public class UserManager {
         return userRepository.findByUsername(username);
     }
 
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
     public User createUser(User user) {
         return userRepository.save(user);
     }

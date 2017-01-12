@@ -62,5 +62,7 @@
 <div id="commonDialog"></div>
 <script src="/website/layout/scripts/jquery.min.js"></script> 
 <script src="/website/layout/scripts/jquery.mobilemenu.js"></script>
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'textarea.tinymce' });</script>
 </body>
 </html>
