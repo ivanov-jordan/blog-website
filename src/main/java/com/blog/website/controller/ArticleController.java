@@ -65,9 +65,11 @@ public class ArticleController {
 
     @RequestMapping(value = URI_EDIT, method = RequestMethod.GET)
     public ModelAndView articleEdit(@PathVariable long articleId, HttpServletRequest request) {
-        Article article = articleManager.getArticle(articleId);
+        Article article = null;
         if (articleId <= 0) {
             article = new Article();
+        } else {
+            article = articleManager.getArticle(articleId);
         }
 
         ModelAndView mav = new ModelAndView("article_edit");
@@ -85,7 +87,6 @@ public class ArticleController {
         // TODO validate article form
         articleManager.submitArticle(article, user);
         mav.setView(new RedirectView("/" + URI + "/" + article.getId(), true, true, false));
-
         return mav;
     }
 

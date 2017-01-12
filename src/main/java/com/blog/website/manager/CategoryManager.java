@@ -27,4 +27,8 @@ public class CategoryManager {
         return categoryRepository.findOne(categoryId);
     }
 
+    public Category saveCategory(Category category) {
+        return categoryRepository.save(category);
+    }
+
 }

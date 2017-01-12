@@ -19,7 +19,7 @@
           </div>
           <div class="block clear">
             <label for="description">Description <span>*</span></label>
-            <form:input path="description" id="description" size="100" />
+            <form:textarea path="description" id="description" cols="100" rows="4" />
           </div>
           <div class="block clear">
             <label for="content">Content</label>
