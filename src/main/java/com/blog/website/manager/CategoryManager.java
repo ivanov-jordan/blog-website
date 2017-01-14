@@ -31,4 +31,8 @@ public class CategoryManager {
         return categoryRepository.save(category);
     }
 
+    public void deleteCategory(long categoryId) {
+        categoryRepository.delete(categoryId);
+    }
+
 }

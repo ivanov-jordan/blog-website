@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.blog.website.manager.ArticleManager;
@@ -22,6 +23,7 @@ public class CategoryController {
     public static final String URI = "category";
     public static final String URI_CATEGORY = "/{categoryId}";
     public static final String URI_EDIT = URI_CATEGORY + "/edit";
+    public static final String URI_DELETE = URI_CATEGORY + "/delete";
 
     @Autowired
     private ArticleManager articleManager;
@@ -60,6 +62,12 @@ public class CategoryController {
         categoryManager.saveCategory(category);
         mav.setView(new RedirectView("/" + URI + "/" + category.getId(), true, true, false));
         return mav;
+    }
+
+    @RequestMapping(value = URI_DELETE, method = RequestMethod.POST)
+    public View deleteCategory(@PathVariable long categoryId, HttpServletRequest request) {
+        categoryManager.deleteCategory(categoryId);
+        return new RedirectView(HomeController.URI, true, true, false);
     }
 
 }

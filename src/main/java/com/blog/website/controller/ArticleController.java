@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.blog.website.manager.ArticleManager;
@@ -32,7 +33,9 @@ public class ArticleController {
     public static final String URI = "article";
     public static final String URI_ARTICLE = "/{articleId}";
     public static final String URI_EDIT = URI_ARTICLE + "/edit";
+    public static final String URI_DELETE = URI_ARTICLE + "/delete";
     public static final String URI_COMMENT = URI_ARTICLE + "/comment";
+    public static final String URI_COMMENT_DELETE = URI_COMMENT + "/{commentId}/delete";
 
     @Autowired
     private CategoryEditor categoryEditor;
@@ -64,7 +67,7 @@ public class ArticleController {
     }
 
     @RequestMapping(value = URI_EDIT, method = RequestMethod.GET)
-    public ModelAndView articleEdit(@PathVariable long articleId, HttpServletRequest request) {
+    public ModelAndView editArticle(@PathVariable long articleId, HttpServletRequest request) {
         Article article = null;
         if (articleId <= 0) {
             article = new Article();
@@ -78,7 +81,7 @@ public class ArticleController {
     }
 
     @RequestMapping(value = URI_EDIT, method = RequestMethod.POST)
-    public ModelAndView articleSubmit(@PathVariable long articleId, @ModelAttribute("articleForm") Article article,
+    public ModelAndView submitArticle(@PathVariable long articleId, @ModelAttribute("articleForm") Article article,
             HttpServletRequest request) {
         User user = sessionManager.get(request);
 
@@ -90,8 +93,14 @@ public class ArticleController {
         return mav;
     }
 
+    @RequestMapping(value = URI_DELETE, method = RequestMethod.POST)
+    public View deleteArticle(@PathVariable long articleId, HttpServletRequest request) {
+        articleManager.deleteArticle(articleId);
+        return new RedirectView(HomeController.URI, true, true, false);
+    }
+
     @RequestMapping(value = URI_COMMENT, method = RequestMethod.POST)
-    public ModelAndView commentSubmit(@PathVariable long articleId, @ModelAttribute("commentForm") Comment comment,
+    public ModelAndView submitComment(@PathVariable long articleId, @ModelAttribute("commentForm") Comment comment,
             BindingResult result, HttpServletRequest request) {
         Article article = articleManager.getArticle(articleId);
         List<Comment> comments = commentManager.getComments(articleId);

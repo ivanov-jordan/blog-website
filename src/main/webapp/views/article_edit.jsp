@@ -32,7 +32,11 @@
           <div>
             <input name="submit" type="submit" value="Save">
           </div>
-        </form:form>      
+        </form:form>  
+        
+        <form onsubmit="return confirm('Do you really want to delete this article?');" action="./delete" method="post">
+        	<input name="delete" type="submit" value="Delete">
+        </form>    
         
       </div>
       <!-- ################################################################################################ -->

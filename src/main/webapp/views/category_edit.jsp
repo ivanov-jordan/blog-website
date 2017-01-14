@@ -16,6 +16,10 @@
           </div>
         </form:form>      
         
+        <form onsubmit="return confirm('Do you really want to delete this category?');" action="./delete" method="post">
+        	<input name="delete" type="submit" value="Delete">
+        </form>
+        
       </div>
 
     <!-- ################################################################################################ -->

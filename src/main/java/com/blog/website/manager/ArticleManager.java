@@ -34,4 +34,8 @@ public class ArticleManager {
         articleRepository.save(article);
     }
 
+    public void deleteArticle(long articleId) {
+        articleRepository.delete(articleId);
+    }
+
 }
