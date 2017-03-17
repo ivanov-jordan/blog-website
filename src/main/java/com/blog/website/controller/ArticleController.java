@@ -123,4 +123,10 @@ public class ArticleController {
         return mav;
     }
 
+    @RequestMapping(value = URI_COMMENT_DELETE, method = RequestMethod.POST)
+    public View deleteComment(@PathVariable long articleId, @PathVariable long commentId, HttpServletRequest request) {
+        commentManager.deleteComment(commentId);
+        return new RedirectView("/" + URI + "/" + articleId, true, true, false);
+    }
+
 }

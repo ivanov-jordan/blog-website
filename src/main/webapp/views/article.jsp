@@ -38,6 +38,11 @@
               <div class="comcont">
                 <p><c:out value="${comment.comment}" /></p>
               </div>
+              <c:if test="${user != null && user.editor == true}">
+              <form onsubmit="return confirm('Do you really want to delete this comment?');" action="./${article.id}/comment/${comment.id}/delete" method="post">
+                <button type="submit">Delete</button>
+              </form>
+              </c:if>
             </article>
           </li>      
       </c:forEach>

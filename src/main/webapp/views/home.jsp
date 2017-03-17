@@ -7,7 +7,7 @@
       <p class="nospace">Trends, news, reviews and other useful information</p>
     </div>
     <div class="group">
-    <c:forEach items="${articles}" var="article" begin="0" end="1" varStatus="loop">
+    <c:forEach items="${articles}" var="article" begin="0" end="3" varStatus="loop">
       <div class="colour-${loop.index+1} one_half <c:if test="${loop.index == 0}">first</c:if>">
         <article class="group colour-${loop.index+1}"> 
           <!-- ################################################################################################ -->

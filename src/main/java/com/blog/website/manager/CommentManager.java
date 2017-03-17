@@ -26,4 +26,8 @@ public class CommentManager {
         commentRepository.save(comment);
     }
 
+    public void deleteComment(long commentId) {
+        commentRepository.delete(commentId);
+    }
+
 }

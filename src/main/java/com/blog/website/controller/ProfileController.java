@@ -31,7 +31,7 @@ public class ProfileController {
     public static final String URI_REGISTER = "/register";
 
     @Autowired
-    UserManager userManager;
+    private UserManager userManager;
 
     @Autowired
     private SessionManager sessionManager;
